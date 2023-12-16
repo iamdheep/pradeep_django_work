@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <style>
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+      
+      /* Hide default HTML checkbox */
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      
+      /* The slider */
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+      
+      .slider:before {
+        position: absolute;
+        content: '';
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+      
+      input:checked + .slider {
+        background-color: #2196f3;
+      }
+      
+      input:focus + .slider {
+        box-shadow: 0 0 1px #2196f3;
+      }
+      
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+      
+      /* Rounded sliders */
+      .slider.round {
+        border-radius: 34px;
+      }
+      
+      .slider.round:before {
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <label class="switch">
+              <input type="checkbox" class="exclusive-checkbox" onclick="toggleButton(this)" checked />
+              <span class="slider"></span>
+            </label>
+            <form action="">
+              <div class="mb-3 mt-3">
+                <input type="name" class="form-control get_name" id="name1" placeholder="Enter username" name="username" />
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control get_email" id="email1" placeholder="Enter email" name="email" />
+              </div>
+              <div class="mb-3">
+                <input type="password" class="form-control" id="pwd1" placeholder="Enter password" name="pswd" />
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+          <div class="row">
+            <label class="switch">
+              <input type="checkbox" class="exclusive-checkbox" onclick="toggleButton(this)" />
+              <span class="slider"></span>
+            </label>
+            <form action="">
+              <div class="mb-3 mt-3">
+                <input type="name" class="form-control get_name" id="name2" placeholder="Enter username" name="username" />
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control get_email" id="email2" placeholder="Enter email" name="email" />
+              </div>
+              <div class="mb-3">
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" />
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+          <div class="row">
+            <label class="switch">
+              <input type="checkbox" class="exclusive-checkbox" onclick="toggleButton(this)" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h3>Preview</h3>
+          <div id="userPreview_Info"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleButton(clickedCheckbox) {
+        // var checkboxes = document.getElementsByClassName('exclusive-checkbox') 
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]')
+        // Deselect all checkboxes except the clicked one
+        for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i] !== clickedCheckbox) {
+            checkboxes[i].checked = false
+          }
+        }
+        
+      }
+      function preview(){
+        
+        var name = document.getElementsByClassName('get_name').value;
+        var email = document.getElementsByClassName('get_email').value;
+        console.log(checkboxes.id)
+        console.log(name)
+        console.log(email)
+        console.log(checkboxes.checked)
+        if (checkboxes.checked) {
+          userPreview_Info.innerHTML = '<p><strong>Name:</strong> ' + name + '</p>' + '<p><strong>Email:</strong> ' + email + '</p>'
+        } 
+      }
+    </script>
+  </body>
+</html>
